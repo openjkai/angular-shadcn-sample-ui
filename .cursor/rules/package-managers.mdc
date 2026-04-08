@@ -1,0 +1,10 @@
+---
+description: Yarn-first installs; npm/pnpm/bun compatible scripts
+alwaysApply: true
+---
+
+# Package managers
+
+- **Primary:** **Yarn 4** via Corepack (`packageManager` in [package.json](package.json)). Run `corepack enable` once, then `yarn install`. Commit **yarn.lock** only.
+- **npm / pnpm / bun:** Scripts use local `node_modules/.bin` in Husky hooks, so installs work. Other lockfiles are gitignored to avoid mixing resolutions—regenerate with Yarn when changing dependencies.
+- **Adding deps:** Prefer `yarn add` / `yarn add -D`. After changing [package.json](package.json), run `yarn install` and commit the updated `yarn.lock`.

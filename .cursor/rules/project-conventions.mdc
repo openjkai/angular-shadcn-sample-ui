@@ -1,0 +1,14 @@
+---
+description: Angular + TypeScript project standards and file layout
+globs: "**/*.{ts,html,scss,css}"
+alwaysApply: false
+---
+
+# Project conventions
+
+- Use **standalone** components and `inject()` for DI where it reads clearly; prefer explicit constructor injection only if the team standard requires it.
+- **Imports**: group Angular first, then third-party, then local; use path aliases (`~/` or `@/`) consistently once configured in `tsconfig.json`.
+- **Templates**: keep templates small; extract subcomponents or directives instead of huge HTML strings.
+- **Styling**: Tailwind + shadcn-ng tokens; prefer design tokens (`bg-background`, `text-foreground`) over raw hex in components.
+- **Naming**: `*.component.ts`, `*.service.ts`, kebab-case file names; PascalCase class names.
+- Do not add features beyond the task; match existing patterns in the same folder.

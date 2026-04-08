@@ -1,0 +1,39 @@
+---
+description: Git commit messages must follow Conventional Commits
+alwaysApply: true
+---
+
+# Conventional Commits
+
+All commits use **Conventional Commits** enforced by Commitlint.
+
+## Format
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+- **type** (required): `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+- **scope** (optional): short area, e.g. `auth`, `ui`, `deps`
+- **description** (required): imperative mood, lowercase, no period at end — e.g. `add login form`, not `Added login form.`
+
+## Examples
+
+```
+feat(ui): add primary button variants
+fix(router): correct lazy route path for dashboard
+chore(deps): bump angular to 19.x
+docs(readme): document nvm and format scripts
+```
+
+## Anti-patterns
+
+- `WIP`, `fix stuff`, or vague one-word subjects
+- Subject line ending with `.`
+- Type not in the allowed list (see `commitlint.config.cjs`)
+
+When suggesting a commit message for the user, output a **single line** matching the format above.
