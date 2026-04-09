@@ -1,39 +1,65 @@
 ---
-description: Git commit messages must follow Conventional Commits
+description: Git commit messages must follow Conventional Commits and Commitlint
 alwaysApply: true
 ---
 
 # Conventional Commits
 
-All commits use **Conventional Commits** enforced by Commitlint.
+All commits use **Conventional Commits** enforced by Commitlint (`commitlint.config.cjs`).
 
 ## Format
 
 ```
 <type>(<scope>): <description>
 
-[optional body]
+[optional body — use this when detail does not fit the header rule]
 
 [optional footer(s)]
 ```
 
 - **type** (required): `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
-- **scope** (optional): short area, e.g. `auth`, `ui`, `deps`
-- **description** (required): imperative mood, lowercase, no period at end — e.g. `add login form`, not `Added login form.`
+- **scope** (optional): short area, e.g. `ui`, `router`, `deps`
+- **description** (required): imperative mood, lowercase, no period at end
 
-## Examples
+## Header length (strict)
+
+- The **entire first line** (from `feat` through the end of the description) must be **at most 100 characters** (`header-max-length`).
+- Prefer **short** subjects (~50–72 chars). If you need more detail, add a **blank line** and a **body**; do not cram everything into the first line.
+
+## Examples (valid headers)
 
 ```
-feat(ui): add primary button variants
-fix(router): correct lazy route path for dashboard
-chore(deps): bump angular to 19.x
-docs(readme): document nvm and format scripts
+feat(ui): add shadcn button and app shell layout
+fix(router): correct dashboard lazy route
+chore(deps): bump angular patch version
+```
+
+## Example when detail is long (use body)
+
+**Bad** (header too long; will fail Commitlint):
+
+```
+feat(ui): implement button component with variants and size options; enhance app layout with theme service and routing
+```
+
+**Good**:
+
+```
+feat(ui): add button variants and app shell with theme
+
+- UbButton directive and layout shell
+- ThemeService, routes for home/dashboard/forms
 ```
 
 ## Anti-patterns
 
+- First line longer than 100 characters
 - `WIP`, `fix stuff`, or vague one-word subjects
 - Subject line ending with `.`
-- Type not in the allowed list (see `commitlint.config.cjs`)
+- Type not in the allowed list
 
-When suggesting a commit message for the user, output a **single line** matching the format above.
+## When suggesting a commit for the user
+
+1. Propose a **header** that satisfies **type**, **scope**, and **≤ 100 characters** total on line 1.
+2. If more context is needed, add a **body** after one blank line (bullet or short paragraphs).
+3. Do not output a single overloaded line that exceeds the limit.

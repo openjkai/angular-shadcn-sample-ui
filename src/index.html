@@ -2,10 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>AngularShadcnSampleUi</title>
+    <title>angular-shadcn-sample-ui</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Angular + Tailwind + shadcn-ng sample UI — professional demo and patterns."
+    />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var k = 'angular-shadcn-sample-ui-theme';
+        try {
+          var t = localStorage.getItem(k);
+          var dark =
+            t === 'dark' ||
+            (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
   </head>
   <body>
     <app-root></app-root>

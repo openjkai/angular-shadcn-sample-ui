@@ -1,0 +1,71 @@
+<div class="bg-background text-foreground flex min-h-dvh flex-col">
+  <header
+    class="border-border bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
+  >
+    <div class="container flex h-14 items-center justify-between gap-4">
+      <div class="flex min-w-0 flex-1 items-center gap-6">
+        <a
+          routerLink="/"
+          class="text-foreground shrink-0 text-sm font-semibold tracking-tight sm:text-base"
+        >
+          Sample UI
+        </a>
+        <nav
+          class="text-muted-foreground flex max-w-[min(100%,24rem)] gap-1 overflow-x-auto sm:max-w-none"
+          aria-label="Main"
+        >
+          <a
+            routerLink="/"
+            routerLinkActive="bg-accent text-accent-foreground"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="hover:bg-accent/80 shrink-0 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors"
+          >
+            Home
+          </a>
+          <a
+            routerLink="/dashboard"
+            routerLinkActive="bg-accent text-accent-foreground"
+            class="hover:bg-accent/80 shrink-0 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors"
+          >
+            Dashboard
+          </a>
+          <a
+            routerLink="/forms"
+            routerLinkActive="bg-accent text-accent-foreground"
+            class="hover:bg-accent/80 shrink-0 rounded-md px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors"
+          >
+            Forms
+          </a>
+        </nav>
+      </div>
+      <button
+        type="button"
+        ubButton
+        variant="outline"
+        size="icon"
+        class="shrink-0"
+        (click)="theme.toggle()"
+        [attr.aria-label]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+      >
+        @if (theme.isDark()) {
+          <ng-icon name="lucide-sun" class="size-4" />
+        } @else {
+          <ng-icon name="lucide-moon" class="size-4" />
+        }
+      </button>
+    </div>
+  </header>
+
+  <main class="container flex flex-1 flex-col py-8">
+    <router-outlet />
+  </main>
+
+  <footer class="border-border mt-auto border-t py-6">
+    <div
+      class="text-muted-foreground container flex flex-col items-center justify-between gap-2 text-sm sm:flex-row"
+    >
+      <span>angular-shadcn-sample-ui</span>
+      <span>Angular · Tailwind · shadcn-ng</span>
+    </div>
+  </footer>
+</div>

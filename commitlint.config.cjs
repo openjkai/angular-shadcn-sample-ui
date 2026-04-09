@@ -20,5 +20,7 @@ module.exports = {
       ],
     ],
     'subject-case': [2, 'never', ['pascal-case', 'upper-case']],
+    /** First line only — Cursor/AI and humans must stay within this (entire header). */
+    'header-max-length': [2, 'always', 100],
   },
 };
