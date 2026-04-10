@@ -1,65 +1,60 @@
 ---
-description: Git commit messages must follow Conventional Commits and Commitlint
+description: Conventional Commits + Commitlint; first line MUST be ≤100 chars (any suggested commit)
 alwaysApply: true
 ---
 
-# Conventional Commits
+# Conventional commits (Commitlint)
 
-All commits use **Conventional Commits** enforced by Commitlint (`commitlint.config.cjs`).
+**Before you output or apply any git commit message** (including “generate commit message”, quick commit, or chat suggestions): **count characters on line 1 only.** Husky runs Commitlint on every commit; **`header-max-length` is 100** — the whole first line must be **≤ 100 characters** or the commit is rejected.
+
+Do not rely on “roughly short”; **shorten the subject** and put the rest in the **body** after a blank line.
+
+## Mandatory checklist (for every suggested commit)
+
+1. Line 1 matches: `type(scope): description` (scope optional).
+2. **Character count of line 1 ≤ 100** (spaces count).
+3. If you are near the limit, **prefer a shorter subject** and bullets in the body.
 
 ## Format
 
 ```
-<type>(<scope>): <description>
+<type>(<scope>): <short description>
 
-[optional body — use this when detail does not fit the header rule]
-
-[optional footer(s)]
+[body — details, bullets, what changed]
 ```
 
-- **type** (required): `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
-- **scope** (optional): short area, e.g. `ui`, `router`, `deps`
-- **description** (required): imperative mood, lowercase, no period at end
+- **type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+- **description**: imperative, lowercase, no trailing period on the subject line
 
-## Header length (strict)
+## Real failure to avoid
 
-- The **entire first line** (from `feat` through the end of the description) must be **at most 100 characters** (`header-max-length`).
-- Prefer **short** subjects (~50–72 chars). If you need more detail, add a **blank line** and a **body**; do not cram everything into the first line.
-
-## Examples (valid headers)
+Too long (126 chars — **will fail**):
 
 ```
-feat(ui): add shadcn button and app shell layout
-fix(router): correct dashboard lazy route
-chore(deps): bump angular patch version
+feat(ui): introduce ubCard directives for consistent card layout across pages and update page content with new card components
 ```
 
-## Example when detail is long (use body)
-
-**Bad** (header too long; will fail Commitlint):
+**Fixed** (short header + body):
 
 ```
-feat(ui): implement button component with variants and size options; enhance app layout with theme service and routing
+feat(ui): add ubCard layout to home, dashboard, and forms
+
+- Import card directives on each page
+- Page h1 + card h3 pattern for headings
 ```
 
-**Good**:
+## More valid headers (all ≤ 100 chars)
 
 ```
-feat(ui): add button variants and app shell with theme
-
-- UbButton directive and layout shell
-- ThemeService, routes for home/dashboard/forms
+feat(ui): add ubCard layout to home, dashboard, and forms
+fix(router): lazy-load dashboard chunk path
+chore(deps): bump tailwind patch
 ```
 
 ## Anti-patterns
 
-- First line longer than 100 characters
-- `WIP`, `fix stuff`, or vague one-word subjects
-- Subject line ending with `.`
-- Type not in the allowed list
+- Subject line over 100 characters (entire first line)
+- Cramming lists or semicolon chains into line 1 — use a **body** instead
+- `WIP`, vague subjects, trailing `.` on the subject
 
-## When suggesting a commit for the user
-
-1. Propose a **header** that satisfies **type**, **scope**, and **≤ 100 characters** total on line 1.
-2. If more context is needed, add a **body** after one blank line (bullet or short paragraphs).
-3. Do not output a single overloaded line that exceeds the limit.
+When the user asks for a commit message, output **line 1** that passes the length rule, then **body** if needed — never a single long subject line.
