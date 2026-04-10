@@ -11,5 +11,6 @@ alwaysApply: false
 - **Templates**: keep templates small; extract subcomponents or directives instead of huge HTML strings.
 - **Styling**: Tailwind + shadcn-ng tokens; prefer design tokens (`bg-background`, `text-foreground`) over raw hex in components.
 - **Layout**: Do not use bare Tailwind `container` for page width — it does not center or pad in v4. Use global classes in `src/styles.css`: **`layout-container`** (max-width + horizontal padding + `mx-auto`), **`page-section`** / **`page-section--wide`** for routed page content columns.
+- **shadcn-ng cards**: Import directives from `~/components/ui/card`. **`ubCardTitle`** is only valid on **`h3`** (see `components/ui/card.ts`). Each route page should expose one visible **`h1`** for the page name, then use **`h3`** inside cards for subheadings.
 - **Naming**: `*.component.ts`, `*.service.ts`, kebab-case file names; PascalCase class names.
 - Do not add features beyond the task; match existing patterns in the same folder.
