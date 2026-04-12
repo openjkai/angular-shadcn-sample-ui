@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { NgIcon } from '@ng-icons/core';
 
 import { UbButtonDirective } from '~/components/ui/button';
 import {
@@ -11,9 +11,9 @@ import {
 } from '~/components/ui/card';
 
 @Component({
-  selector: 'app-home-page',
+  selector: 'app-contact-page',
   imports: [
-    RouterLink,
+    NgIcon,
     UbButtonDirective,
     UbCardDirective,
     UbCardHeaderDirective,
@@ -21,8 +21,8 @@ import {
     UbCardDescriptionDirective,
     UbCardContentDirective,
   ],
-  templateUrl: './home.html',
-  styleUrl: './home.scss',
+  templateUrl: './contact.html',
+  styleUrl: './contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage {}
+export class ContactPage {}

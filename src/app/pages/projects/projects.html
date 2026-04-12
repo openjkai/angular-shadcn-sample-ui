@@ -1,0 +1,45 @@
+<section class="page-section page-section--wide space-y-8">
+  <div>
+    <h1 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">Projects</h1>
+    <p class="text-muted-foreground mt-2 max-w-2xl text-base leading-relaxed sm:text-lg">
+      Selected work and demos. Replace the placeholders with your repositories, case studies, and
+      live links.
+    </p>
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+    @for (project of projects; track project.title) {
+      <div ubCard class="flex flex-col">
+        <div ubCardHeader>
+          <h3 ubCardTitle class="text-lg">{{ project.title }}</h3>
+          <p ubCardDescription>{{ project.description }}</p>
+        </div>
+        <div ubCardContent class="flex flex-1 flex-col gap-3 pt-0">
+          <ul class="flex flex-wrap gap-2" aria-label="Technologies">
+            @for (tag of project.tags; track tag) {
+              <li class="bg-muted text-muted-foreground rounded-md px-2 py-0.5 text-xs font-medium">
+                {{ tag }}
+              </li>
+            }
+          </ul>
+        </div>
+        <div ubCardFooter class="border-border mt-auto justify-end border-t pt-4">
+          <a
+            [href]="project.href"
+            ubButton
+            variant="outline"
+            size="sm"
+            class="gap-1.5"
+            [attr.target]="project.href.startsWith('http') ? '_blank' : null"
+            [attr.rel]="project.href.startsWith('http') ? 'noopener noreferrer' : null"
+          >
+            {{ project.linkLabel }}
+            @if (project.href.startsWith('http')) {
+              <ng-icon name="lucide-external-link" class="size-3.5" />
+            }
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+</section>

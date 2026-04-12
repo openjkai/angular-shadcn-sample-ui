@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-const appTitle = 'angular-shadcn-sample-ui';
+const appTitle = 'Portfolio';
 
 export const routes: Routes = [
   {
@@ -12,6 +12,16 @@ export const routes: Routes = [
         pathMatch: 'full',
         loadComponent: () => import('./pages/home/home').then((m) => m.HomePage),
         title: `Home · ${appTitle}`,
+      },
+      {
+        path: 'projects',
+        loadComponent: () => import('./pages/projects/projects').then((m) => m.ProjectsPage),
+        title: `Projects · ${appTitle}`,
+      },
+      {
+        path: 'contact',
+        loadComponent: () => import('./pages/contact/contact').then((m) => m.ContactPage),
+        title: `Contact · ${appTitle}`,
       },
       {
         path: 'dashboard',
