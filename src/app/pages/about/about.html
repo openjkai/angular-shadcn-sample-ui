@@ -1,0 +1,55 @@
+<section class="page-section page-section--wide space-y-10">
+  <div>
+    <h1 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">About</h1>
+    <p class="text-muted-foreground mt-2 max-w-2xl text-base leading-relaxed sm:text-lg">
+      A short bio and skills you can tailor to your story. Swap the timeline entries for real roles,
+      projects, or education.
+    </p>
+  </div>
+
+  <div ubCard class="max-w-3xl">
+    <div ubCardHeader>
+      <h3 ubCardTitle class="text-xl sm:text-2xl">Bio</h3>
+      <p ubCardDescription>Two or three sentences that read well on LinkedIn and your site.</p>
+    </div>
+    <div ubCardContent>
+      <p class="text-muted-foreground leading-relaxed">
+        I'm a developer who cares about clear UI, maintainable Angular code, and shipping features
+        users can rely on. This site showcases layout, routing, forms, and theming patterns I reach
+        for on real projects.
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <h2 class="text-foreground mb-4 text-xl font-semibold tracking-tight">Skills</h2>
+    <ul class="flex flex-wrap gap-2" aria-label="Skills and technologies">
+      @for (skill of skills; track skill.label) {
+        <li
+          class="bg-secondary text-secondary-foreground rounded-md px-3 py-1.5 text-sm font-medium"
+        >
+          {{ skill.label }}
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div>
+    <h2 class="text-foreground mb-4 text-xl font-semibold tracking-tight">Timeline</h2>
+    <ol class="border-border space-y-6 border-l-2 pl-6">
+      @for (item of timeline; track item.title) {
+        <li class="relative">
+          <span
+            class="bg-background border-border absolute top-1.5 -left-[calc(0.5rem+1px)] size-2.5 rounded-full border-2"
+            aria-hidden="true"
+          ></span>
+          <p class="text-muted-foreground text-sm font-medium tabular-nums">{{ item.period }}</p>
+          <h3 class="text-foreground mt-0.5 text-base font-semibold">{{ item.title }}</h3>
+          <p class="text-muted-foreground mt-1 max-w-2xl text-sm leading-relaxed">
+            {{ item.description }}
+          </p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

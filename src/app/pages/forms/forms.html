@@ -1,17 +1,121 @@
-<section class="page-section space-y-6">
-  <h1 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">Forms</h1>
-
-  <div ubCard>
-    <div ubCardHeader>
-      <h3 ubCardTitle>Coming next</h3>
-      <p ubCardDescription>
-        Inputs, validation, and dialogs will live here using the same layout and card patterns.
-      </p>
-    </div>
-    <div ubCardContent>
-      <p class="text-muted-foreground leading-relaxed">
-        This section is a placeholder until form primitives are added from shadcn-ng.
-      </p>
-    </div>
+<section class="page-section page-section--wide space-y-8">
+  <div>
+    <h1 class="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">Forms</h1>
+    <p class="text-muted-foreground mt-2 max-w-2xl text-base leading-relaxed sm:text-lg">
+      Reactive form with validation—wire the submit handler to your API when you are ready.
+    </p>
   </div>
+
+  @if (sent()) {
+    <div ubCard class="max-w-xl">
+      <div ubCardHeader>
+        <h3 ubCardTitle>Message recorded</h3>
+        <p ubCardDescription>
+          In a real app, this would POST to your backend. The form was reset so you can try again.
+        </p>
+      </div>
+      <div ubCardContent>
+        <button type="button" ubButton variant="outline" (click)="sendAnother()">
+          Send another message
+        </button>
+      </div>
+    </div>
+  } @else {
+    <div ubCard class="max-w-xl">
+      <div ubCardHeader>
+        <h3 ubCardTitle>Sample contact form</h3>
+        <p ubCardDescription>
+          Required fields use built-in validators and show errors after submit.
+        </p>
+      </div>
+      <div ubCardContent>
+        <form class="space-y-5" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+          <div class="space-y-2">
+            <label for="form-name" class="text-foreground text-sm font-medium">Name</label>
+            <input
+              id="form-name"
+              type="text"
+              formControlName="name"
+              autocomplete="name"
+              class="border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-ring flex h-9 w-full rounded-md border px-3 py-1 text-sm shadow-xs outline-none transition-[color,box-shadow] focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
+              [attr.aria-invalid]="form.controls.name.invalid && form.controls.name.touched"
+              [attr.aria-describedby]="
+                form.controls.name.invalid && form.controls.name.touched ? 'form-name-err' : null
+              "
+            />
+            @if (form.controls.name.invalid && form.controls.name.touched) {
+              <p id="form-name-err" class="text-destructive text-sm" role="alert">
+                @if (form.controls.name.hasError('required')) {
+                  Enter your name.
+                } @else if (form.controls.name.hasError('minlength')) {
+                  Use at least 2 characters.
+                }
+              </p>
+            }
+          </div>
+
+          <div class="space-y-2">
+            <label for="form-email" class="text-foreground text-sm font-medium">Email</label>
+            <input
+              id="form-email"
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              class="border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-ring flex h-9 w-full rounded-md border px-3 py-1 text-sm shadow-xs outline-none transition-[color,box-shadow] focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
+              [attr.aria-invalid]="form.controls.email.invalid && form.controls.email.touched"
+              [attr.aria-describedby]="
+                form.controls.email.invalid && form.controls.email.touched ? 'form-email-err' : null
+              "
+            />
+            @if (form.controls.email.invalid && form.controls.email.touched) {
+              <p id="form-email-err" class="text-destructive text-sm" role="alert">
+                @if (form.controls.email.hasError('required')) {
+                  Enter your email.
+                } @else if (form.controls.email.hasError('email')) {
+                  Use a valid email address.
+                }
+              </p>
+            }
+          </div>
+
+          <div class="space-y-2">
+            <label for="form-message" class="text-foreground text-sm font-medium">Message</label>
+            <textarea
+              id="form-message"
+              formControlName="message"
+              rows="4"
+              class="border-input bg-background text-foreground placeholder:text-muted-foreground focus-visible:ring-ring flex min-h-[100px] w-full rounded-md border px-3 py-2 text-sm shadow-xs outline-none transition-[color,box-shadow] focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
+              [attr.aria-invalid]="form.controls.message.invalid && form.controls.message.touched"
+              [attr.aria-describedby]="
+                form.controls.message.invalid && form.controls.message.touched
+                  ? 'form-message-err'
+                  : null
+              "
+            ></textarea>
+            @if (form.controls.message.invalid && form.controls.message.touched) {
+              <p id="form-message-err" class="text-destructive text-sm" role="alert">
+                @if (form.controls.message.hasError('required')) {
+                  Enter a message.
+                } @else if (form.controls.message.hasError('maxlength')) {
+                  Message is too long (max 2000 characters).
+                }
+              </p>
+            }
+          </div>
+
+          <div class="flex flex-wrap gap-3 pt-1">
+            <button type="submit" ubButton>Send</button>
+            <button
+              type="button"
+              ubButton
+              variant="outline"
+              (click)="form.reset(); form.markAsUntouched()"
+            >
+              Clear
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
 </section>

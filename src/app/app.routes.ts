@@ -14,6 +14,11 @@ export const routes: Routes = [
         title: `Home · ${appTitle}`,
       },
       {
+        path: 'about',
+        loadComponent: () => import('./pages/about/about').then((m) => m.AboutPage),
+        title: `About · ${appTitle}`,
+      },
+      {
         path: 'projects',
         loadComponent: () => import('./pages/projects/projects').then((m) => m.ProjectsPage),
         title: `Projects · ${appTitle}`,
@@ -32,6 +37,11 @@ export const routes: Routes = [
         path: 'forms',
         loadComponent: () => import('./pages/forms/forms').then((m) => m.FormsPage),
         title: `Forms · ${appTitle}`,
+      },
+      {
+        path: '**',
+        loadComponent: () => import('./pages/not-found/not-found').then((m) => m.NotFoundPage),
+        title: `Page not found · ${appTitle}`,
       },
     ],
   },

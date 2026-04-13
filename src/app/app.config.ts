@@ -4,6 +4,7 @@ import { provideIcons } from '@ng-icons/core';
 import {
   lucideExternalLink,
   lucideGithub,
+  lucideHouse,
   lucideLinkedin,
   lucideMail,
   lucideMoon,
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
       lucideSun,
       lucideExternalLink,
       lucideGithub,
+      lucideHouse,
       lucideLinkedin,
       lucideMail,
     }),

@@ -1,0 +1,22 @@
+<section class="page-section flex flex-1 flex-col items-center justify-center py-12 sm:py-16">
+  <div ubCard class="w-full max-w-md text-center">
+    <div ubCardHeader class="items-center text-center">
+      <p class="text-muted-foreground text-sm font-medium tabular-nums" aria-hidden="true">404</p>
+      <h1 class="text-foreground text-2xl font-semibold leading-none tracking-tight">
+        Page not found
+      </h1>
+      <p ubCardDescription>
+        That URL does not match any route. Check the address or head back to the home page.
+      </p>
+    </div>
+    <div ubCardContent class="flex flex-col items-center gap-3 pt-2 sm:flex-row sm:justify-center">
+      <a routerLink="/" ubButton class="w-full gap-2 sm:w-auto">
+        <ng-icon name="lucide-house" class="size-4" />
+        Back to home
+      </a>
+      <a routerLink="/projects" ubButton variant="outline" class="w-full sm:w-auto">
+        View projects
+      </a>
+    </div>
+  </div>
+</section>
