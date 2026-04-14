@@ -14,4 +14,5 @@ import { ThemeService } from '../../core/theme/theme.service';
 })
 export class AppShell {
   protected readonly theme = inject(ThemeService);
+  protected readonly currentYear = new Date().getFullYear();
 }

@@ -143,9 +143,100 @@
 
   <footer class="border-border mt-auto border-t">
     <div
-      class="text-muted-foreground layout-container flex flex-col items-center justify-between gap-3 py-8 text-sm sm:flex-row sm:py-10"
+      class="layout-container grid gap-10 py-10 sm:grid-cols-2 sm:py-12 lg:grid-cols-3 lg:gap-12"
     >
-      <span class="text-center sm:text-left">Portfolio · Angular sample</span>
+      <div class="space-y-2">
+        <p class="text-foreground text-base font-semibold tracking-tight">Portfolio</p>
+        <p class="text-muted-foreground max-w-xs text-sm leading-relaxed">
+          Angular, Tailwind, and shadcn-style UI patterns—swap content and deploy with your domain.
+        </p>
+      </div>
+
+      <nav class="text-sm" aria-label="Footer">
+        <p class="text-foreground mb-3 font-medium">Site</p>
+        <ul class="text-muted-foreground space-y-2">
+          <li>
+            <a
+              routerLink="/about"
+              class="hover:text-foreground focus-visible:ring-ring rounded-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/projects"
+              class="hover:text-foreground focus-visible:ring-ring rounded-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/contact"
+              class="hover:text-foreground focus-visible:ring-ring rounded-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/forms"
+              class="hover:text-foreground focus-visible:ring-ring rounded-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+              >Forms</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sm:col-span-2 lg:col-span-1">
+        <p class="text-foreground mb-3 text-sm font-medium">Connect</p>
+        <ul class="flex flex-wrap gap-2">
+          <li>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              ubButton
+              variant="outline"
+              size="icon"
+              class="shrink-0"
+              aria-label="GitHub"
+            >
+              <ng-icon name="lucide-github" class="size-4" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              ubButton
+              variant="outline"
+              size="icon"
+              class="shrink-0"
+              aria-label="LinkedIn"
+            >
+              <ng-icon name="lucide-linkedin" class="size-4" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:hello@example.com"
+              ubButton
+              variant="outline"
+              size="icon"
+              class="shrink-0"
+              aria-label="Email"
+            >
+              <ng-icon name="lucide-mail" class="size-4" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="border-border text-muted-foreground layout-container flex flex-col items-center justify-between gap-2 border-t py-6 text-xs sm:flex-row sm:py-8 sm:text-sm"
+    >
+      <span class="text-center sm:text-left">© {{ currentYear }} · Angular sample</span>
       <span class="text-center sm:text-right">Angular · Tailwind · shadcn-ng</span>
     </div>
   </footer>

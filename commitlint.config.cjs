@@ -20,7 +20,11 @@ module.exports = {
       ],
     ],
     'subject-case': [2, 'never', ['pascal-case', 'upper-case']],
-    /** First line only — Cursor/AI and humans must stay within this (entire header). */
-    'header-max-length': [2, 'always', 100],
+    /**
+     * Entire first line (type, scope, subject). Default conventional config is often 100; this repo
+     * uses 120 so Cursor/IDE auto-generated subjects (often 100–115 chars) still pass. Keep subjects
+     * short anyway — put detail in the body after a blank line.
+     */
+    'header-max-length': [2, 'always', 120],
   },
 };
